@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yulu Zhang - Portfolio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;600;700&display=swap">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Josefin Slab', serif;
+      background: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .name-title {
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      margin-bottom: 4rem;
+      color: #333;
+    }
+
+    .artwork-container {
+      width: 100%;
+      margin: 0 auto 3rem;
+      text-align: center;
+      padding: 0;
+    }
+
+    .artwork-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      max-width: none;
+    }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      font-size: 2.5rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-link {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      letter-spacing: inherit;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+    }
+
+    .nav-link:hover {
+      color: #666;
+      transform: translateY(-2px);
+    }
+
+    .nav-separator {
+      font-size: 2rem;
+      color: #666;
+    }
+
+    .page-container {
+      min-height: 100vh;
+      padding: 2rem;
+      display: none;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 3rem;
+      position: relative;
+      height: 80px;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: #666;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+    }
+
+    .back-link:hover {
+      color: #333;
+    }
+
+    .page-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .content-section {
+      flex: 1;
+      min-width: 300px;
+      padding: 2rem;
+      border: 1px solid #eee;
+      transition: border-color 0.3s ease;
+    }
+
+    .content-section:hover {
+      border-color: #333;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .section-description {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.8;
+    }
+    
+    /* Artwork Gallery Styles */
+    .artwork-list {
+      max-width: 800px;
+      margin: 60px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    
+    .artwork-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid #eee;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+      background-color: #fff;
+      position: relative;
+    }
+    
+    .artwork-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-color: #333;
+    }
+ 
+    /* Artwork Detail Styles */
+    .artwork-detail {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 0;
+      display: none;
+    }
+    
+    .artwork-detail-content {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 2rem;
+    }
+    
+    .artwork-info-panel {
+      width: 30%;
+      text-align: left;
+      padding: 0 2rem 2rem;
+    }
+    
+    .artwork-detail-title {
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+    
+    .artwork-detail-year {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+    
+    .artwork-detail-technique {
+      font-size: 1rem;
+      color: #888;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    
+    .artwork-detail-description {
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      color: #555;
+    }
+    
+    .artwork-image-panel {
+      width: 70%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 0 2rem;
+    }
+    
+    .artwork-video-container {
+      width: 100%;
+      margin: 0 auto 1.5rem;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      justify-content: center;
+      grid-column: 1 / -1;
+    }
+    
+    .artwork-video-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    
+    .artwork-video-container video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .artwork-image-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 16/9;
+      transition: all 0.3s ease;
+    }
+    
+    .artwork-image-item:hover {
+      transform: scale(1.02);
+    }
+    
+    .artwork-main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+    }
+    
+    /* Image Modal */
+    .image-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+    
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+    
+    .enlarged-image {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    
+    .image-nav-modal {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: white;
+    }
+    
+    .image-nav-modal:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .image-nav-modal.prev {
+      left: 20px;
+    }
+    
+    .image-nav-modal.next {
+      right: 20px;
+    }
+    
+    .image-counter-modal {
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: white;
+      font-size: 1rem;
+    }
+    
+    /* Resume Page Styles */
+    .resume-content {
+      max-width: 900px;
+      text-align: left;
+      display: block;
+    }
+    
+    .resume-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .profile-image-container {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border: 3px solid #fff;
+    }
+    
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .resume-section {
+      margin-bottom: 2.5rem;
+    }
+    
+    .resume-section h3 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    
+    .resume-item {
+      margin-bottom: 2rem;
+    }
+    
+    .resume-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+    }
+    
+    .resume-item-header h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .resume-date {
+      font-size: 1rem;
+      color: #888;
+    }
+    
+    .job-title {
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 0.8rem;
+    }
+    
+    .job-description {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .job-responsibilities, .project-details {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .job-responsibilities li, .project-details li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    
+    .job-responsibilities li:before, .project-details li:before {
+      content: "•";
+      position: absolute;
+      left: -1rem;
+      color: #888;
+    }
+    
+    .skills-overview {
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .skill-category {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .skill-category h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .name-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+      
+      .navigation {
+        flex-direction: column;
+        gap: 1rem;
+        font-size: 2rem;
+      }
+      
+      .nav-separator {
+        display: none;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .page-content {
+        flex-direction: column;
+      }
+      
+      .content-section {
+        width: 100%;
+      }
+      
+      .artwork-detail-content {
+        flex-direction: column;
+      }
+      
+      .artwork-info-panel {
+        width: 100%;
+      }
+      
+      .artwork-image-panel {
+        width: 100%;
+      }
+      
+      .resume-item-header {
+        flex-direction: column;
+      }
+      
+      .resume-date {
+        margin-top: 0.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Home Page -->
+  <div id="home" class="container">
+    <h1 class="name-title">Yulu Zhang</h1>
+    
+    <div class="artwork-container">
+      <img 
+        src="https://img.alicdn.com/imgextra/i2/O1CN016IHgw41k9dE0UTw2n_!!6000000004641-55-tps-581-186.svg" 
+        alt="Yulu Zhang's artwork" 
+        class="artwork-image"
+      />
+    </div>
+    
+    <nav class="navigation">
+      <button class="nav-link" onclick="showPage('me')">ME</button>
+      <span class="nav-separator">&</span>
+      <button class="nav-link" onclick="showPage('art')">ART</button>
+      <span class="nav-separator">&</span>
+      <button class="nav-link" onclick="showPage('intelligence')">INTELLIGENCE</button>
+    </nav>
+  </div>
+
+  <!-- Art Page -->
+  <div id="art" class="page-container">
+    <div class="page-header">
+      <button class="back-link" onclick="handleArtBackButton()">←</button>
+      <h1 style="position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.5rem; font-weight: 400; margin-top: 20px; margin-bottom: 0; padding: 0.5rem 1rem; color: #333;">ART</h1>
+    </div>
+    
+    <div id="artwork-list" class="artwork-list">
+      <!-- Artwork 1: 墨竹 -->
+      <div class="artwork-item" onclick="showArtworkDetail('ink-bamboo')">
+        <div style="position: absolute; left: 1rem; top: 1rem; font-size: 1rem; color: #999; font-weight: 300;">01</div>
+        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">墨竹</h3>
+        <p style="font-size: 1.2rem; color: #999; margin-bottom: 1.5rem;">Ink Bamboo</p >
+        <div>
+          <p style="color: #666; font-size: 1.2rem; margin-bottom: 0.5rem;">AI生成设计、数字艺术</p >
+          <p style="color: #999; font-size: 0.9rem;">AI-Generated Design, Digital Art</p >
+        </div>
+      </div>
+      
+      <!-- Artwork 2: 竹编亭 -->
+      <div class="artwork-item" onclick="showArtworkDetail('bamboo-pavilion')">
+        <div style="position: absolute; left: 1rem; top: 1rem; font-size: 1rem; color: #999; font-weight: 300;">02</div>
+        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">竹编亭</h3>
+        <p style="font-size: 1.2rem; color: #999; margin-bottom: 1.5rem;">Bamboo Pavilion</p >
+        <div>
+          <p style="color: #666; font-size: 1.2rem; margin-bottom: 0.5rem;">竹编空间装置、AIGC设计、机械臂建造</p >
+          <p style="color: #999; font-size: 0.9rem;">Bamboo Spatial Installation, AIGC Design, Robotic Construction</p >
+        </div>
+      </div>
+    </div>
+    
+    <!-- Artwork Detail: 墨竹 -->
+    <div id="ink-bamboo-detail" class="artwork-detail">
+      <div class="artwork-detail-content">
+        <div class="artwork-info-panel">
+          <h2 class="artwork-detail-title">墨竹</h2>
+          <p class="artwork-detail-year">2024.03-2024.07</p >
+          <p class="artwork-detail-technique">AI生成设计、数字艺术</p >
+          <div class="artwork-detail-description">
+            <p>墨竹作品融合了传统水墨画技法与AI生成艺术，通过对竹字草书进行转译，生成了一把草书椅。这一系列作品探索了传统书法与现代人工智能的结合，展现了东方美学在当代科技语境下的新可能性。</p >
+            <p style="margin-top: 15px;">The Ink Bamboo project combines traditional ink painting techniques with AI-generated art, translating the cursive script of the Chinese character for "bamboo" into a chair design. This series explores the intersection of traditional calligraphy and modern artificial intelligence, revealing new possibilities for Eastern aesthetics in contemporary technological contexts.</p >
+          </div>
+        </div>
+        
+        <div class="artwork-image-panel">
+          <div class="artwork-image-item" onclick="showEnlargedImage('ink-bamboo', 0)">
+            <img src="https://img.alicdn.com/imgextra/i2/O1CN012pfhJK21KU4vXHbSp_!!6000000006966-0-tps-2000-1125.jpg" alt="墨竹 1" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('ink-bamboo', 1)">
+            <img src="https://img.alicdn.com/imgextra/i3/O1CN01Cof9QO1epPf6PQRUh_!!6000000003920-0-tps-2000-1125.jpg" alt="墨竹 2" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('ink-bamboo', 2)">
+            <img src="https://img.alicdn.com/imgextra/i1/O1CN011ii5c21jPNDs3RBnf_!!6000000004540-0-tps-2000-1125.jpg" alt="墨竹 3" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('ink-bamboo', 3)">
+            <img src="https://img.alicdn.com/imgextra/i3/O1CN01Eivaai2723qDvIjND_!!6000000007738-0-tps-2000-1125.jpg" alt="墨竹 4" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('ink-bamboo', 4)">
+            <img src="https://img.alicdn.com/imgextra/i3/O1CN01goOvji1rj5C0ZoIZH_!!6000000005666-0-tps-2000-1125.jpg" alt="墨竹 5" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('ink-bamboo', 5)">
+            <img src="https://img.alicdn.com/imgextra/i3/O1CN01acJhK51fGR1vfZnIN_!!6000000003979-0-tps-2000-1125.jpg" alt="墨竹 6" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('ink-bamboo', 6)">
+            <img src="https://img.alicdn.com/imgextra/i4/O1CN01MRSHQ31Dc8YPoujyu_!!6000000000236-0-tps-2000-1125.jpg" alt="墨竹 7" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('ink-bamboo', 7)">
+            <img src="https://img.alicdn.com/imgextra/i2/O1CN01UBdg111Ve7Lu6ujPv_!!6000000002677-0-tps-2000-1125.jpg" alt="墨竹 8" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('ink-bamboo', 8)">
+            <img src="https://img.alicdn.com/imgextra/i2/O1CN01GGNJ7m1eB6oArxKVq_!!6000000003832-0-tps-2000-1125.jpg" alt="墨竹 9" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('ink-bamboo', 9)">
+            <img src="https://img.alicdn.com/imgextra/i3/O1CN019AM7Qx1XjH2j4ErKJ_!!6000000002959-0-tps-2000-1125.jpg" alt="墨竹 10" class="artwork-main-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artwork Detail: 竹编亭 -->
+    <div id="bamboo-pavilion-detail" class="artwork-detail">
+      <div class="artwork-detail-content">
+        <div class="artwork-info-panel">
+          <h2 class="artwork-detail-title">竹编亭</h2>
+          <p class="artwork-detail-year">2024.03-2024.07</p >
+          <p class="artwork-detail-technique">竹编空间装置、AIGC设计、机械臂建造</p >
+          <div class="artwork-detail-description">
+            <p>竹编亭项目通过对传统竹编纹样进行转译，用AI生图技术将二维的编织纹样变成三维的竹编亭，最后用机械臂实际建造出来。这一系列作品探索了传统工艺、人工智能与数字制造的结合，创造出既具实用功能又富有艺术美感的空间结构，展现了竹子作为建筑材料的无限可能性。</p >
+            <p style="margin-top: 15px;">The Bamboo Pavilion project translates traditional bamboo weaving patterns, using AI image generation technology to transform 2D weaving patterns into 3D pavilion structures, which are then physically constructed using robotic arms. This series explores the combination of traditional craftsmanship, artificial intelligence, and digital manufacturing, creating spatial structures with both practical functionality and artistic aesthetics, showcasing the unlimited possibilities of bamboo as a building material.</p >
+          </div>
+        </div>
+        
+        <div class="artwork-image-panel">
+          <div class="artwork-image-item" onclick="showEnlargedImage('bamboo-pavilion', 0)">
+            <img src="https://img.alicdn.com/imgextra/i2/O1CN01hOj2Ft1csxUr4PSeS_!!6000000003657-0-tps-2000-1125.jpg" alt="竹编亭 1" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('bamboo-pavilion', 1)">
+            <img src="https://img.alicdn.com/imgextra/i1/O1CN01JQutBl264WLv1Wjp5_!!6000000007608-0-tps-2000-1125.jpg" alt="竹编亭 2" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('bamboo-pavilion', 2)">
+            <img src="https://img.alicdn.com/imgextra/i4/O1CN01IQmwA6252rIWrOToC_!!6000000007469-0-tps-2000-1125.jpg" alt="竹编亭 3" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('bamboo-pavilion', 3)">
+            <img src="https://img.alicdn.com/imgextra/i2/O1CN01hEN8kk1TwJrRLjunK_!!6000000002446-0-tps-2000-1125.jpg" alt="竹编亭 4" class="artwork-main-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Image Modal -->
+    <div id="image-modal" class="image-modal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="hideEnlargedImage()">&times;</span>
+        <img id="enlarged-image" src="" alt="Enlarged artwork" class="enlarged-image" />
+        <button id="prev-image" class="image-nav-modal prev" onclick="navigateImage(-1)">&lt;</button>
+        <button id="next-image" class="image-nav-modal next" onclick="navigateImage(1)">&gt;</button>
+        <div id="image-counter-modal" class="image-counter-modal">1 / 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intelligence Page -->
+  <div id="intelligence" class="page-container">
+    <div class="page-header">
+      <button class="back-link" onclick="handleIntelligenceBackButton()">←</button>
+      <h1 style="position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.5rem; font-weight: 400; margin-top: 20px; margin-bottom: 0; padding: 0.5rem 1rem; color: #333;">INTELLIGENCE</h1>
+    </div>
+    
+    <div id="intelligence-artwork-list" class="artwork-list">
+      <!-- 甄嬛重生来卖货 -->
+      <div class="artwork-item" onclick="showIntelligenceArtworkDetail('zhen-hun')">
+        <div style="position: absolute; left: 1rem; top: 1rem; font-size: 1rem; color: #999; font-weight: 300;">01</div>
+        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">甄嬛重生来卖货</h3>
+        <p style="font-size: 1.2rem; color: #999; margin-bottom: 1.5rem;">Zhen Huan Reborn for E-commerce</p >
+        <div>
+          <p style="color: #666; font-size: 1.2rem; margin-bottom: 0.5rem;">Claude模型全栈开发、RAG、智能客服系统、数字人直播MCP</p >
+          <p style="color: #999; font-size: 0.9rem;">Claude Model Full-Stack Development, RAG, Intelligent Customer Service System, Digital Human Livestreaming MCP</p >
+        </div>
+      </div>
+      
+      <!-- 吃定你了 -->
+      <div class="artwork-item" onclick="showIntelligenceArtworkDetail('chi-ding-ni')">
+        <div style="position: absolute; left: 1rem; top: 1rem; font-size: 1rem; color: #999; font-weight: 300;">02</div>
+        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">吃定你了</h3>
+        <p style="font-size: 1.2rem; color: #999; margin-bottom: 1.5rem;">Got You Covered</p >
+        <div>
+          <p style="color: #666; font-size: 1.2rem; margin-bottom: 0.5rem;">机器学习、推荐系统、自然语言处理</p >
+          <p style="color: #999; font-size: 0.9rem;">Machine Learning, Recommendation Systems, NLP</p >
+        </div>
+      </div>
+
+      <!-- 全链智播间 -->
+      <div class="artwork-item" onclick="showIntelligenceArtworkDetail('smart-livestream')">
+        <div style="position: absolute; left: 1rem; top: 1rem; font-size: 1rem; color: #999; font-weight: 300;">03</div>
+        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">全链智播间</h3>
+        <p style="font-size: 1.2rem; color: #999; margin-bottom: 1.5rem;">Smart Livestream Studio</p >
+        <div>
+          <p style="color: #666; font-size: 1.2rem; margin-bottom: 0.5rem;">语音识别、情感分析、实时AI互动</p >
+          <p style="color: #999; font-size: 0.9rem;">Speech Recognition, Sentiment Analysis, Real-time AI Interaction</p >
+        </div>
+      </div>
+    </div>
+    
+    <!-- 甄嬛重生来卖货 Detail -->
+    <div id="zhen-hun-detail" class="artwork-detail">
+      <div class="artwork-detail-content">
+        <div class="artwork-info-panel">
+          <h2 class="artwork-detail-title">甄嬛重生来卖货</h2>
+          <p class="artwork-detail-year">2025.07</p >
+          <p class="artwork-detail-technique">Claude模型全栈开发、RAG、智能客服系统、数字人直播MCP</p >
+          <div class="artwork-detail-description">
+            <p>当前电商行业竞争白热化的背景下，传统电商直播存在同质化严重、购物店铺用户粘性不足等问题。本项目通过融合大热IP文化、AI数字人技术和智能推荐系统，打造"大热IP+电商"沉浸式购物平台，给用户个性化的导购体验。</p >
+            <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">In the context of intense competition in the e-commerce industry, traditional e-commerce livestreaming faces problems such as homogenization and insufficient user stickiness. This project integrates popular IP culture, AI digital human technology, and intelligent recommendation systems to create an immersive shopping platform that combines "popular IP + e-commerce", providing users with personalized shopping guidance experiences.</p >
+          </div>
+        </div>
+        
+        <div class="artwork-image-panel">
+          <div class="artwork-video-container">
+            <video controls style="width: 100%; height: auto; display: block;">
+              <source src="https://cloud.video.taobao.com/vod/5B6x740gm9NfQ3-nAKgPUQnK9X0aoHT4DIUHZMGIIkM.mp4" type="video/mp4">
+              您的浏览器不支持视频播放。
+            </video>
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 0)">
+            <img src="https://img.alicdn.com/imgextra/i2/O1CN01twtfpZ1jZuKeyXzUV_!!6000000004563-2-tps-2560-1278.png" alt="甄嬛重生来卖货 1" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 1)">
+            <img src="https://img.alicdn.com/imgextra/i1/O1CN01w5wmTk1tgS9NxGK8g_!!6000000005931-2-tps-2560-1278.png" alt="甄嬛重生来卖货 2" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 2)">
+            <img src="https://img.alicdn.com/imgextra/i4/O1CN01Au6wS11SHGkKNYxYn_!!6000000002221-2-tps-2560-1278.png" alt="甄嬛重生来卖货 3" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 3)">
+            <img src="https://img.alicdn.com/imgextra/i1/O1CN01bWoJw61IOvCrPSWEh_!!6000000000884-2-tps-2101-562.png" alt="甄嬛重生来卖货 4" class="artwork-main-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 吃定你了 Detail -->
+    <div id="chi-ding-ni-detail" class="artwork-detail">
+      <div class="artwork-detail-content">
+        <div class="artwork-info-panel">
+          <h2 class="artwork-detail-title">吃定你了</h2>
+          <p class="artwork-detail-year">2023.05-2023.08</p >
+          <p class="artwork-detail-technique">机器学习、推荐系统、自然语言处理</p >
+          <div class="artwork-detail-description">
+            <p>这个项目结合了计算机视觉和自然语言处理技术，创建了一个智能食品推荐系统。通过分析用户的饮食偏好、营养需求和历史选择，系统能够提供个性化的餐饮建议，同时考虑季节性和本地可获得的食材。</p >
+            <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">This project combines computer vision and natural language processing technologies to create an intelligent food recommendation system. By analyzing users' dietary preferences, nutritional needs, and historical choices, the system can provide personalized dining suggestions while considering seasonality and locally available ingredients.</p >
+          </div>
+        </div>
+        
+        <div class="artwork-image-panel">
+          <div class="artwork-video-container">
+            <video controls style="width: 100%; height: auto; display: block;">
+              <source src="https://cloud.video.taobao.com/vod/cUEPK4pChi5x-dsnTzPjtPfRvNe9n7GIBzd50yqeTf8.mp4" type="video/mp4">
+              您的浏览器不支持视频播放。
+            </video>
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 0)">
+            <img src="https://img.alicdn.com/imgextra/i3/O1CN014ucSNo1zYZ1S1PUih_!!6000000006726-2-tps-2560-1477.png" alt="吃定你了 1" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 1)">
+            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Mutd4T1Ip1mS3qDPL_!!6000000000941-2-tps-2560-1278.png" alt="吃定你了 2" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 2)">
+            <img src="https://img.alicdn.com/imgextra/i2/O1CN01oLgO4p1rGEF08GGY7_!!6000000005603-2-tps-1507-1355.png" alt="吃定你了 3" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 3)">
+            <img src="https://img.alicdn.com/imgextra/i4/O1CN018mTJ0n1bpSrLWBuf8_!!6000000003514-2-tps-2144-1309.png" alt="吃定你了 4" class="artwork-main-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 全链智播间 Detail -->
+    <div id="smart-livestream-detail" class="artwork-detail">
+      <div class="artwork-detail-content">
+        <div class="artwork-info-panel">
+          <h2 class="artwork-detail-title">全链智播间</h2>
+          <p class="artwork-detail-year">2022.11-2023.03</p >
+          <p class="artwork-detail-technique">语音识别、情感分析、实时AI互动</p >
+          <div class="artwork-detail-description">
+            <p>全链智播间项目整合了多种AI技术，打造了端到端的智能直播解决方案。从内容规划、脚本生成到实时互动和数据分析，系统全方位提升了直播效率和用户参与度。特别是其实时语音识别和情感分析功能，使主播能够更好地理解和回应观众反应。</p >
+            <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">The Smart Livestream project integrates multiple AI technologies to create an end-to-end intelligent livestreaming solution. From content planning and script generation to real-time interaction and data analysis, the system comprehensively improves livestreaming efficiency and user engagement. Its real-time speech recognition and sentiment analysis features are particularly notable, enabling hosts to better understand and respond to audience reactions.</p >
+          </div>
+        </div>
+        
+        <div class="artwork-image-panel">
+          <div class="artwork-video-container">
+            <video controls style="width: 100%; height: auto; display: block;">
+              <source src="https://cloud.video.taobao.com/vod/4Gc2pItKsT95AryNhBqMT-GcGcaWocwc9gxEbIn9D_M.mp4" type="video/mp4">
+              您的浏览器不支持视频播放。
+            </video>
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('smart-livestream', 0)">
+            <img src="https://img.alicdn.com/imgextra/i4/O1CN01jMsTgQ1xfm1gRNW2w_!!6000000006471-2-tps-2560-1278.png" alt="全链智播间 1" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('smart-livestream', 1)">
+            <img src="https://img.alicdn.com/imgextra/i3/O1CN01yDsTsr1l6FvEJrVer_!!6000000004769-2-tps-2560-1278.png" alt="全链智播间 2" class="artwork-main-image" />
+          </div>
+          <div class="artwork-image-item" onclick="showEnlargedImage('smart-livestream', 2)">
+            <img src="https://img.alicdn.com/imgextra/i2/O1CN019bU0O91YC7zkD0DKG_!!6000000003022-2-tps-2560-1477.png" alt="全链智播间 3" class="artwork-main-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Me Page (Resume) -->
+  <div id="me" class="page-container">
+    <div class="page-header">
+      <button class="back-link" onclick="showPage('home')">←</button>
+      <h1 style="position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.5rem; font-weight: 400; margin-top: 20px; margin-bottom: 0; padding: 0.5rem 1rem; color: #333;">ABOUT ME</h1>
+    </div>
+    
+    <div class="page-content resume-content">
+      <div class="resume-header">
+        <div class="profile-container">
+          <div class="profile-image-container">
+            <img 
+              src="https://img.alicdn.com/imgextra/i1/O1CN01CrGCTC1F81kWXQF1k_!!6000000000441-0-tps-3130-2075.jpg" 
+              alt="张雨露照片" 
+              class="profile-image" 
+            />
+          </div>
+          <div class="profile-info">
+            <h2 style="font-size: 2.5rem; font-weight: 400; margin-bottom: 0.5rem;">张雨露</h2>
+            <p style="font-size: 1.2rem; color: #666; margin-bottom: 0.5rem;">建筑师 & AI产品经理</p >
+            <p style="font-size: 0.9rem; color: #888;">年龄：24岁 | 电话：18739421323 | 邮箱：1808826055@qq.com</p >
+          </div>
+        </div>
+      </div>
+      
+      <div class="resume-section">
+        <h3>教育背景</h3>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <h4>同济大学 (985)</h4>
+            <span class="resume-date">2023.09 - 2026.03</span>
+          </div>
+          <p>建筑学硕士(推免生)</p >
+          <p>排名：前10%</p >
+          <p>研究方向：人工智能辅助建筑设计</p >
+          <p>AIGC设计师、AI产品经理、发表AI相关高水平论文3篇</p >
+        </div>
+        
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <h4>大连理工大学（985)</h4>
+            <span class="resume-date">2018.09 - 2023.06</span>
+          </div>
+          <p>建筑学学士</p >
+          <p>排名：前3%</p >
+          <p>GPA: 3.87/ 4.0</p >
+          <p>女生部部长、大创项目负责人、一等学习奖学金（4次）</p >
+        </div>
+      </div>
+      
+      <div class="resume-section">
+        <h3>工作经历</h3>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <h4>阿里国际 | 速卖通产品部</h4>
+            <span class="resume-date">2025.06 — 至今</span>
+          </div>
+          <p class="job-title">AI产品实习生</p >
+          <p class="job-description">工作概述：探索电商领域AI产品应用与落地，聚焦智能招商、虚拟试衣及数字人直播场景。主导核心功能从0到1建设，独立开发多模态AI应用原型并成功推动商业化立项，参与全链路AI产品设计与技术落地。</p >
+          <ul class="job-responsibilities">
+            <li>智能招商产品迭代：深度参与电商数字员工平台智能招商助手的功能迭代，从0到1设计并推动上线定制智能外呼与多渠道触达两大功能模块。基于NLP技术构建自定义智能外呼话术，支持业务端定制外呼，实现日均1w+商家的高效触达；通过多渠道触达平台整合招商场景钉钉/短信/外呼三端的触达情况，显著提升招商效率，缩短商家入驻周期。</li>
+            <li>独立开发全链路AI产品：独立设计并开发基于Claude模型的多模态数字人直播间原型，覆盖AI选品、个性口播生成、商品图创作到数字人视频直播的全链路流程，项目在部门AI创新大赛中荣获第3名（3/75）。并将大赛获奖项目持续迭代优化，升级为"AI试衣+数字人直播"融合方案，推动技术成果向商业化产品转化。</li>
+          </ul>
+        </div>
+        
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <h4>小米 | 智能家居部</h4>
+            <span class="resume-date">2025.02 — 2025.05</span>
+          </div>
+          <p class="job-title">AI应用产品实习生</p >
+          <p class="job-description">工作概述：负责米家APP中AI功能"米家建议"的能力评测、优化迭代与用户反馈闭环，通过自主搭建周期性评测Agent、优化审核流程及深度分析用户反馈，显著提升功能的智能化水平、文案质量及用户体验。</p >
+          <ul class="job-responsibilities">
+            <li>搭建评测Agent：深度参与推送建议及总结习惯功能的多轮评测迭代。设计并确立时间、环境及历史行为合理性的评测维度，搭建评测工作流，独立封装Agent，实现评测流程自动化（自动读表、分析、生成报告），成功建立周期性评测机制。</li>
+            <li>文案生成流程设计：主导设计多设备组合文案智能生成流程，并搭建"AI初审-大模型修正-人工终审"三级审核工作流，将拒审原因自动传递至大模型进行针对性优化。输出标准化S0P规范，成功复用于100+智能场景文案生成体系。</li>
+            <li>用户反馈处理：每周处理100+条用户反馈，通过日志追踪与场景复现定位根因，协调技术团队及时修复异常问题。分析反馈提炼迭代需求，协助产品能力优化。</li>
+          </ul>
+        </div>
+        
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <h4>上海可见爱学教育科技公司</h4>
+            <span class="resume-date">2024.09 — 2025.01</span>
+          </div>
+          <p class="job-title">AI产品实习生</p >
+          <p class="job-description">工作概述：负责火箭AI学习系统中AI错题解析和1V1知识点讲解产品的全流程设计与落地。独立主导两大核心AI功能模块从0到1的产品规划、需求分析、大模型选型评估及Prompt工程优化工作，显著提升系统智能化水平和用户体验。</p >
+          <ul class="job-responsibilities">
+            <li>产品规划设计：主导AI错题解析和1V1知识点讲解产品架构设计，通过调研精准把握学生个性化学习需求，融合大模型语义分析+知识点图谱+学习行为数据，实现智能解析、引导式解题，有效提升学生学习效率，用户满意度提升30%。</li>
+            <li>Prompt设计与测试：基于多学科场景需求，设计Prompt架构并制定工程化输入输出规范；从学科、年级、题型三个维度构建测试场景，依据评测结果持续优化Prompt；最终沉淀出覆盖不同产品线的20+Prompt模板，显著提升解析准确率。</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="resume-section">
+        <h3>项目经历</h3>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <h4>AIGC驱动的家具与空间装置设计及落地</h4>
+            <span class="resume-date">2024.03 — 2024.07</span>
+          </div>
+          <p>角色：项目负责人（AI产品设计→实体搭建全流程负责人）</p >
+          <ul class="project-details">
+            <li>Al设计：基于Stable Diffusion平台自主训练多种风格化LoRA模型，成功生成书法形椅子与中国结编织纹理的竹亭。</li>
+            <li>工程落地：主导5m×5m大型空间装置从AI设计到实体搭建，精准把控材料选型与施工节点，设计还原度达90%以上。</li>
+          </ul>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <h4>FuReb：传统民居立面图像智能改造系统</h4>
+            <span class="resume-date">2024.08 — 2024.12</span>
+          </div>
+          <p>角色：AI产品经理（数据集构建→模型训练→生成优化）</p >
+          <ul class="project-details">
+            <li>大模型微调：收集并清洗1000+传统民居案例数据，基于CLIP模型训练图像-文本对齐模型，生成多维度语义标签（风格/材质/结构），基于数据集微调Stable Diffusion模型，适配传统民居风格化生成需求。</li>
+            <li>工作流设计与图像生成：使用ComfyUI搭建可视化工作流，设计模块化节点系统，支持灵活调整生成参数。</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="resume-section">
+        <h3>技能优势</h3>
+        <p class="skills-overview">优势：深入理解AI技术原理，熟练运用主流AIGC工具与大模型，具备智能体开发与落地的全流程实践经验。</p >
+        <div class="skills-container">
+          <div class="skill-category">
+            <h4>技术工具</h4>
+            <p>Prompt Engineering、Midjourney、ComfyUI | Python、SQL | Figma、X-mind、Office系列 | PS、AI、ID</p >
+          </div>
+          
+          <div class="skill-category">
+            <h4>语言能力</h4>
+            <p>CET-6（英语可作为工作语言）</p >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Artwork data
+    const artworks = {
+      'ink-bamboo': {
+        title: '墨竹',
+        images: [
+          'https://img.alicdn.com/imgextra/i2/O1CN012pfhJK21KU4vXHbSp_!!6000000006966-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i3/O1CN01Cof9QO1epPf6PQRUh_!!6000000003920-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i1/O1CN011ii5c21jPNDs3RBnf_!!6000000004540-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i3/O1CN01Eivaai2723qDvIjND_!!6000000007738-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i3/O1CN01goOvji1rj5C0ZoIZH_!!6000000005666-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i3/O1CN01acJhK51fGR1vfZnIN_!!6000000003979-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i4/O1CN01MRSHQ31Dc8YPoujyu_!!6000000000236-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i2/O1CN01UBdg111Ve7Lu6ujPv_!!6000000002677-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i2/O1CN01GGNJ7m1eB6oArxKVq_!!6000000003832-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i3/O1CN019AM7Qx1XjH2j4ErKJ_!!6000000002959-0-tps-2000-1125.jpg'
+        ]
+      },
+      'bamboo-pavilion': {
+        title: '竹编亭',
+        images: [
+          'https://img.alicdn.com/imgextra/i2/O1CN01hOj2Ft1csxUr4PSeS_!!6000000003657-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i1/O1CN01JQutBl264WLv1Wjp5_!!6000000007608-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i4/O1CN01IQmwA6252rIWrOToC_!!6000000007469-0-tps-2000-1125.jpg',
+          'https://img.alicdn.com/imgextra/i2/O1CN01hEN8kk1TwJrRLjunK_!!6000000002446-0-tps-2000-1125.jpg'
+        ]
+      },
+      'zhen-hun': {
+        title: '甄嬛重生来卖货',
+        images: [
+          'https://img.alicdn.com/imgextra/i2/O1CN01twtfpZ1jZuKeyXzUV_!!6000000004563-2-tps-2560-1278.png',
+          'https://img.alicdn.com/imgextra/i1/O1CN01w5wmTk1tgS9NxGK8g_!!6000000005931-2-tps-2560-1278.png',
+          'https://img.alicdn.com/imgextra/i4/O1CN01Au6wS11SHGkKNYxYn_!!6000000002221-2-tps-2560-1278.png',
+          'https://img.alicdn.com/imgextra/i1/O1CN01bWoJw61IOvCrPSWEh_!!6000000000884-2-tps-2101-562.png'
+        ]
+      },
+      'chi-ding-ni': {
+        title: '吃定你了',
+        images: [
+          'https://img.alicdn.com/imgextra/i3/O1CN014ucSNo1zYZ1S1PUih_!!6000000006726-2-tps-2560-1477.png',
+          'https://img.alicdn.com/imgextra/i1/O1CN01Mutd4T1Ip1mS3qDPL_!!6000000000941-2-tps-2560-1278.png',
+          'https://img.alicdn.com/imgextra/i2/O1CN01oLgO4p1rGEF08GGY7_!!6000000005603-2-tps-1507-1355.png',
+          'https://img.alicdn.com/imgextra/i4/O1CN018mTJ0n1bpSrLWBuf8_!!6000000003514-2-tps-2144-1309.png'
+        ]
+      },
+      'smart-livestream': {
+        title: '全链智播间',
+        images: [
+          'https://img.alicdn.com/imgextra/i4/O1CN01jMsTgQ1xfm1gRNW2w_!!6000000006471-2-tps-2560-1278.png',
+          'https://img.alicdn.com/imgextra/i3/O1CN01yDsTsr1l6FvEJrVer_!!6000000004769-2-tps-2560-1278.png',
+          'https://img.alicdn.com/imgextra/i2/O1CN019bU0O91YC7zkD0DKG_!!6000000003022-2-tps-2560-1477.png'
+        ]
+      }
+    };
+
+    
+    // Current state for modal
+    let currentArtwork = null;
+    let currentImageIndex = 0;
+    
+    // Show artwork detail
+    function showArtworkDetail(artworkId) {
+      document.getElementById('artwork-list').style.display = 'none';
+      document.querySelector('#art .page-header h1').textContent = artworks[artworkId].title;
+      document.getElementById(`${artworkId}-detail`).style.display = 'block';
+    }
+    
+    // Hide artwork detail
+    function hideArtworkDetail() {
+      document.querySelectorAll('#art .artwork-detail').forEach(detail => {
+        detail.style.display = 'none';
+      });
+      document.querySelector('#art .page-header h1').textContent = 'ART';
+      document.getElementById('artwork-list').style.display = 'flex';
+    }
+    
+    // Show Intelligence artwork detail
+    function showIntelligenceArtworkDetail(artworkId) {
+      document.getElementById('intelligence-artwork-list').style.display = 'none';
+      document.querySelector('#intelligence .page-header h1').textContent = artworks[artworkId].title;
+      document.getElementById(`${artworkId}-detail`).style.display = 'block';
+    }
+    
+    // Hide Intelligence artwork detail
+    function hideIntelligenceArtworkDetail() {
+      document.querySelectorAll('#intelligence .artwork-detail').forEach(detail => {
+        detail.style.display = 'none';
+      });
+      document.querySelector('#intelligence .page-header h1').textContent = 'INTELLIGENCE';
+      document.getElementById('intelligence-artwork-list').style.display = 'flex';
+    }
+    
+    // Show enlarged image in modal
+    function showEnlargedImage(artworkId, index) {
+      currentArtwork = artworkId;
+      currentImageIndex = index;
+      
+      const artwork = artworks[artworkId];
+      const modal = document.getElementById('image-modal');
+      const enlargedImage = document.getElementById('enlarged-image');
+      const counter = document.getElementById('image-counter-modal');
+      
+      enlargedImage.src = artwork.images[index];
+      counter.textContent = `${index + 1} / ${artwork.images.length}`;
+      
+      modal.style.display = 'flex';
+      
+      // Prevent event propagation
+      event.stopPropagation();
+    }
+    
+    // Hide enlarged image modal
+    function hideEnlargedImage() {
+      document.getElementById('image-modal').style.display = 'none';
+    }
+    
+    // Navigate between images in modal
+    function navigateImage(direction) {
+      if (!currentArtwork) return;
+      
+      const artwork = artworks[currentArtwork];
+      const imagesLength = artwork.images.length;
+      
+      // Calculate new index with wrapping
+      currentImageIndex = (currentImageIndex + direction + imagesLength) % imagesLength;
+
+      // Update image and counter
+      document.getElementById('enlarged-image').src = artwork.images[currentImageIndex];
+      document.getElementById('image-counter-modal').textContent = `${currentImageIndex + 1} / ${imagesLength}`;
+      
+      // Prevent event propagation
+      event.stopPropagation();
+    }
+    
+    // Handle back button for Art page
+    function handleArtBackButton() {
+      // Check if we're in artwork detail view
+      const artworkDetailVisible = Array.from(document.querySelectorAll('#art .artwork-detail')).some(detail => detail.style.display === 'block');
+      
+      if (artworkDetailVisible) {
+        hideArtworkDetail();
+      } else {
+        showPage('home');
+      }
+    }
+    
+    // Handle back button for Intelligence page
+    function handleIntelligenceBackButton() {
+      // Check if we're in artwork detail view
+      const artworkDetailVisible = Array.from(document.querySelectorAll('#intelligence .artwork-detail')).some(detail => detail.style.display === 'block');
+      
+      if (artworkDetailVisible) {
+        hideIntelligenceArtworkDetail();
+      } else {
+        showPage('home');
+      }
+    }
+    
+    // Handle page navigation
+    function showPage(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.container, .page-container').forEach(page => {
+        page.style.display = 'none';
+      });
+      
+      // Show the selected page
+      if (pageId === 'home') {
+        document.getElementById('home').style.display = 'flex';
+      } else {
+        document.getElementById(pageId).style.display = 'block';
+        
+        // Reset art page to show artwork list
+        if (pageId === 'art') {
+          document.getElementById('artwork-list').style.display = 'flex';
+          document.querySelectorAll('#art .artwork-detail').forEach(detail => {
+            detail.style.display = 'none';
+          });
+          document.querySelector('#art .page-header h1').textContent = 'ART';
+        }
+        
+        // Reset intelligence page to show artwork list
+        if (pageId === 'intelligence') {
+          document.getElementById('intelligence-artwork-list').style.display = 'flex';
+          document.querySelectorAll('#intelligence .artwork-detail').forEach(detail => {
+            detail.style.display = 'none';
+          });
+          document.querySelector('#intelligence .page-header h1').textContent = 'INTELLIGENCE';
+        }
+      }
+      
+      // Update URL hash for bookmarking
+      window.location.hash = pageId === 'home' ? '' : pageId;
+    }
+    
+    // Handle initial page load and browser back/forward navigation
+    function handleHashChange() {
+      const hash = window.location.hash.substring(1);
+      if (hash === 'art' || hash === 'intelligence' || hash === 'me') {
+        showPage(hash);
+      } else {
+        showPage('home');
+      }
+    }
+    
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', handleHashChange);
+  </script>
+</body>
+</html>
