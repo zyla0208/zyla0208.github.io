@@ -666,165 +666,155 @@
       </div>
     </div>
     
-    <!-- Image Modal -->
-    <div id="image-modal" class="image-modal">
-      <div class="modal-content">
-        <span class="close-modal" onclick="hideEnlargedImage()">&times;</span>
-        <img id="enlarged-image" src="" alt="Enlarged artwork" class="enlarged-image" />
-        <button id="prev-image" class="image-nav-modal prev" onclick="navigateImage(-1)">&lt;</button>
-        <button id="next-image" class="image-nav-modal next" onclick="navigateImage(1)">&gt;</button>
-        <div id="image-counter-modal" class="image-counter-modal">1 / 10</div>
-      </div>
     </div>
-  </div>
-
-  <!-- Intelligence Page -->
-  <div id="intelligence" class="page-container">
-    <div class="page-header">
-      <button class="back-link" onclick="handleIntelligenceBackButton()">←</button>
-      <h1 style="position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.5rem; font-weight: 400; margin-top: 20px; margin-bottom: 0; padding: 0.5rem 1rem; color: #333;">INTELLIGENCE</h1>
-    </div>
-    
-    <div id="intelligence-artwork-list" class="artwork-list">
-      <!-- 甄嬛重生来卖货 -->
-      <div class="artwork-item" onclick="showIntelligenceArtworkDetail('zhen-hun')">
-        <div style="position: absolute; left: 1rem; top: 1rem; font-size: 1rem; color: #999; font-weight: 300;">01</div>
-        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">甄嬛重生来卖货</h3>
-        <p style="font-size: 1.2rem; color: #999; margin-bottom: 1.5rem;">Zhen Huan Reborn for E-commerce</p >
-        <div>
-          <p style="color: #666; font-size: 1.2rem; margin-bottom: 0.5rem;">Claude模型全栈开发、RAG、智能客服系统、数字人直播MCP</p >
-          <p style="color: #999; font-size: 0.9rem;">Claude Model Full-Stack Development, RAG, Intelligent Customer Service System, Digital Human Livestreaming MCP</p >
-        </div>
-      </div>
       
-      <!-- 吃定你了 -->
-      <div class="artwork-item" onclick="showIntelligenceArtworkDetail('chi-ding-ni')">
-        <div style="position: absolute; left: 1rem; top: 1rem; font-size: 1rem; color: #999; font-weight: 300;">02</div>
-        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">吃定你了</h3>
-        <p style="font-size: 1.2rem; color: #999; margin-bottom: 1.5rem;">Got You Covered</p >
-        <div>
-          <p style="color: #666; font-size: 1.2rem; margin-bottom: 0.5rem;">机器学习、推荐系统、自然语言处理</p >
-          <p style="color: #999; font-size: 0.9rem;">Machine Learning, Recommendation Systems, NLP</p >
+      <!-- Intelligence Page -->
+      <div id="intelligence" class="page-container">
+        <div class="page-header">
+          <button class="back-link" onclick="handleIntelligenceBackButton()">←</button>
+          <h1 style="position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.5rem; font-weight: 400; margin-top: 20px; margin-bottom: 0; padding: 0.5rem 1rem; color: #333;">INTELLIGENCE</h1>
         </div>
-      </div>
+        
+        <div id="intelligence-artwork-list" class="artwork-list">
+          <!-- 甄嬛重生来卖货 -->
+          <div class="artwork-item" onclick="showIntelligenceArtworkDetail('zhen-hun')">
+            <div style="position: absolute; left: 1rem; top: 1rem; font-size: 1rem; color: #999; font-weight: 300;">01</div>
+            <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">甄嬛重生来卖货</h3>
+            <p style="font-size: 1.2rem; color: #999; margin-bottom: 1.5rem;">Zhen Huan Reborn for E-commerce</p >
+            <div>
+              <p style="color: #666; font-size: 1.2rem; margin-bottom: 0.5rem;">RAG、智能客服系统、数字人直播MCP</p >
+              <p style="color: #999; font-size: 0.9rem;">RAG, Intelligent Customer Service System, Digital Human Livestreaming MCP</p >
+            </div>
+          </div>
+          
+          <!-- 吃定你了 -->
+          <div class="artwork-item" onclick="showIntelligenceArtworkDetail('chi-ding-ni')">
+            <div style="position: absolute; left: 1rem; top: 1rem; font-size: 1rem; color: #999; font-weight: 300;">02</div>
+            <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">吃定你了</h3>
+            <p style="font-size: 1.2rem; color: #999; margin-bottom: 1.5rem;">Got You Covered</p >
+            <div>
+              <p style="color: #666; font-size: 1.2rem; margin-bottom: 0.5rem;">RAG、智能推荐系统</p >
+              <p style="color: #999; font-size: 0.9rem;">RAG, Intelligent Recommendation System</p >
+            </div>
+          </div>
 
-      <!-- 全链智播间 -->
-      <div class="artwork-item" onclick="showIntelligenceArtworkDetail('smart-livestream')">
-        <div style="position: absolute; left: 1rem; top: 1rem; font-size: 1rem; color: #999; font-weight: 300;">03</div>
-        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">全链智播间</h3>
-        <p style="font-size: 1.2rem; color: #999; margin-bottom: 1.5rem;">Smart Livestream Studio</p >
-        <div>
-          <p style="color: #666; font-size: 1.2rem; margin-bottom: 0.5rem;">语音识别、情感分析、实时AI互动</p >
-          <p style="color: #999; font-size: 0.9rem;">Speech Recognition, Sentiment Analysis, Real-time AI Interaction</p >
-        </div>
-      </div>
-    </div>
-    
-    <!-- 甄嬛重生来卖货 Detail -->
-    <div id="zhen-hun-detail" class="artwork-detail">
-      <div class="artwork-detail-content">
-        <div class="artwork-info-panel">
-          <h2 class="artwork-detail-title">甄嬛重生来卖货</h2>
-          <p class="artwork-detail-year">2025.07</p >
-          <p class="artwork-detail-technique">Claude模型全栈开发、RAG、智能客服系统、数字人直播MCP</p >
-          <div class="artwork-detail-description">
-            <p>当前电商行业竞争白热化的背景下，传统电商直播存在同质化严重、购物店铺用户粘性不足等问题。本项目通过融合大热IP文化、AI数字人技术和智能推荐系统，打造"大热IP+电商"沉浸式购物平台，给用户个性化的导购体验。</p >
-            <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">In the context of intense competition in the e-commerce industry, traditional e-commerce livestreaming faces problems such as homogenization and insufficient user stickiness. This project integrates popular IP culture, AI digital human technology, and intelligent recommendation systems to create an immersive shopping platform that combines "popular IP + e-commerce", providing users with personalized shopping guidance experiences.</p >
+          <!-- 全链智播间 -->
+          <div class="artwork-item" onclick="showIntelligenceArtworkDetail('smart-livestream')">
+            <div style="position: absolute; left: 1rem; top: 1rem; font-size: 1rem; color: #999; font-weight: 300;">03</div>
+            <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">全链智播间</h3>
+            <p style="font-size: 1.2rem; color: #999; margin-bottom: 1.5rem;">Smart Livestream Studio</p >
+            <div>
+              <p style="color: #666; font-size: 1.2rem; margin-bottom: 0.5rem;">MCP、图像生成、数字人直播技术</p >
+              <p style="color: #999; font-size: 0.9rem;">MCP, Image Generation, Digital Human Live Broadcast Technology</p >
+            </div>
           </div>
         </div>
         
-        <div class="artwork-image-panel">
-          <div class="artwork-video-container">
-            <video controls style="width: 100%; height: auto; display: block;">
-              <source src="https://cloud.video.taobao.com/vod/5B6x740gm9NfQ3-nAKgPUQnK9X0aoHT4DIUHZMGIIkM.mp4" type="video/mp4">
-              您的浏览器不支持视频播放。
-            </video>
-          </div>
-          <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 0)">
-            <img src="https://img.alicdn.com/imgextra/i2/O1CN01twtfpZ1jZuKeyXzUV_!!6000000004563-2-tps-2560-1278.png" alt="甄嬛重生来卖货 1" class="artwork-main-image" />
-          </div>
-          <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 1)">
-            <img src="https://img.alicdn.com/imgextra/i1/O1CN01w5wmTk1tgS9NxGK8g_!!6000000005931-2-tps-2560-1278.png" alt="甄嬛重生来卖货 2" class="artwork-main-image" />
-          </div>
-          <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 2)">
-            <img src="https://img.alicdn.com/imgextra/i4/O1CN01Au6wS11SHGkKNYxYn_!!6000000002221-2-tps-2560-1278.png" alt="甄嬛重生来卖货 3" class="artwork-main-image" />
-          </div>
-          <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 3)">
-            <img src="https://img.alicdn.com/imgextra/i1/O1CN01bWoJw61IOvCrPSWEh_!!6000000000884-2-tps-2101-562.png" alt="甄嬛重生来卖货 4" class="artwork-main-image" />
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- 吃定你了 Detail -->
-    <div id="chi-ding-ni-detail" class="artwork-detail">
-      <div class="artwork-detail-content">
-        <div class="artwork-info-panel">
-          <h2 class="artwork-detail-title">吃定你了</h2>
-          <p class="artwork-detail-year">2023.05-2023.08</p >
-          <p class="artwork-detail-technique">机器学习、推荐系统、自然语言处理</p >
-          <div class="artwork-detail-description">
-            <p>这个项目结合了计算机视觉和自然语言处理技术，创建了一个智能食品推荐系统。通过分析用户的饮食偏好、营养需求和历史选择，系统能够提供个性化的餐饮建议，同时考虑季节性和本地可获得的食材。</p >
-            <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">This project combines computer vision and natural language processing technologies to create an intelligent food recommendation system. By analyzing users' dietary preferences, nutritional needs, and historical choices, the system can provide personalized dining suggestions while considering seasonality and locally available ingredients.</p >
-          </div>
-        </div>
-        
-        <div class="artwork-image-panel">
-          <div class="artwork-video-container">
-            <video controls style="width: 100%; height: auto; display: block;">
-              <source src="https://cloud.video.taobao.com/vod/cUEPK4pChi5x-dsnTzPjtPfRvNe9n7GIBzd50yqeTf8.mp4" type="video/mp4">
-              您的浏览器不支持视频播放。
-            </video>
-          </div>
-          <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 0)">
-            <img src="https://img.alicdn.com/imgextra/i3/O1CN014ucSNo1zYZ1S1PUih_!!6000000006726-2-tps-2560-1477.png" alt="吃定你了 1" class="artwork-main-image" />
-          </div>
-          <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 1)">
-            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Mutd4T1Ip1mS3qDPL_!!6000000000941-2-tps-2560-1278.png" alt="吃定你了 2" class="artwork-main-image" />
-          </div>
-          <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 2)">
-            <img src="https://img.alicdn.com/imgextra/i2/O1CN01oLgO4p1rGEF08GGY7_!!6000000005603-2-tps-1507-1355.png" alt="吃定你了 3" class="artwork-main-image" />
-          </div>
-          <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 3)">
-            <img src="https://img.alicdn.com/imgextra/i4/O1CN018mTJ0n1bpSrLWBuf8_!!6000000003514-2-tps-2144-1309.png" alt="吃定你了 4" class="artwork-main-image" />
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- 全链智播间 Detail -->
-    <div id="smart-livestream-detail" class="artwork-detail">
-      <div class="artwork-detail-content">
-        <div class="artwork-info-panel">
-          <h2 class="artwork-detail-title">全链智播间</h2>
-          <p class="artwork-detail-year">2022.11-2023.03</p >
-          <p class="artwork-detail-technique">语音识别、情感分析、实时AI互动</p >
-          <div class="artwork-detail-description">
-            <p>全链智播间项目整合了多种AI技术，打造了端到端的智能直播解决方案。从内容规划、脚本生成到实时互动和数据分析，系统全方位提升了直播效率和用户参与度。特别是其实时语音识别和情感分析功能，使主播能够更好地理解和回应观众反应。</p >
-            <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">The Smart Livestream project integrates multiple AI technologies to create an end-to-end intelligent livestreaming solution. From content planning and script generation to real-time interaction and data analysis, the system comprehensively improves livestreaming efficiency and user engagement. Its real-time speech recognition and sentiment analysis features are particularly notable, enabling hosts to better understand and respond to audience reactions.</p >
+        <!-- 甄嬛重生来卖货 Detail -->
+        <div id="zhen-hun-detail" class="artwork-detail">
+          <div class="artwork-detail-content">
+            <div class="artwork-info-panel">
+              <h2 class="artwork-detail-title">甄嬛重生来卖货</h2>
+              <p class="artwork-detail-year">2025.06</p >
+              <p class="artwork-detail-technique">Claude模型全栈开发、RAG、智能客服系统、数字人直播MCP</p >
+              <div class="artwork-detail-description">
+                <p>当前电商行业竞争白热化的背景下，传统电商直播存在同质化严重、购物店铺用户粘性不足等问题。本项目通过融合大热IP文化、AI数字人技术和智能推荐系统，打造"大热IP+电商"沉浸式购物平台，给用户个性化的导购体验。</p >
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">In the context of intense competition in the e-commerce industry, traditional e-commerce livestreaming faces problems such as homogenization and insufficient user stickiness. This project integrates popular IP culture, AI digital human technology, and intelligent recommendation systems to create an immersive shopping platform that combines "popular IP + e-commerce", providing users with personalized shopping guidance experiences.</p >
+              </div>
+            </div>
+            
+            <div class="artwork-image-panel">
+              <div class="artwork-video-container">
+                <video controls style="width: 100%; height: auto; display: block;">
+                  <source src="https://cloud.video.taobao.com/vod/5B6x740gm9NfQ3-nAKgPUQnK9X0aoHT4DIUHZMGIIkM.mp4" type="video/mp4">
+                  您的浏览器不支持视频播放。
+                </video>
+              </div>
+              <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 0)">
+                <img src="https://img.alicdn.com/imgextra/i2/O1CN01twtfpZ1jZuKeyXzUV_!!6000000004563-2-tps-2560-1278.png" alt="甄嬛重生来卖货 1" class="artwork-main-image" />
+              </div>
+              <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 1)">
+                <img src="https://img.alicdn.com/imgextra/i1/O1CN01w5wmTk1tgS9NxGK8g_!!6000000005931-2-tps-2560-1278.png" alt="甄嬛重生来卖货 2" class="artwork-main-image" />
+              </div>
+              <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 2)">
+                <img src="https://img.alicdn.com/imgextra/i4/O1CN01Au6wS11SHGkKNYxYn_!!6000000002221-2-tps-2560-1278.png" alt="甄嬛重生来卖货 3" class="artwork-main-image" />
+              </div>
+              <div class="artwork-image-item" onclick="showEnlargedImage('zhen-hun', 3)">
+                <img src="https://img.alicdn.com/imgextra/i1/O1CN01bWoJw61IOvCrPSWEh_!!6000000000884-2-tps-2101-562.png" alt="甄嬛重生来卖货 4" class="artwork-main-image" />
+              </div>
+            </div>
           </div>
         </div>
         
-        <div class="artwork-image-panel">
-          <div class="artwork-video-container">
-            <video controls style="width: 100%; height: auto; display: block;">
-              <source src="https://cloud.video.taobao.com/vod/4Gc2pItKsT95AryNhBqMT-GcGcaWocwc9gxEbIn9D_M.mp4" type="video/mp4">
-              您的浏览器不支持视频播放。
-            </video>
+        <!-- 吃定你了 Detail -->
+        <div id="chi-ding-ni-detail" class="artwork-detail">
+          <div class="artwork-detail-content">
+            <div class="artwork-info-panel">
+              <h2 class="artwork-detail-title">吃定你了</h2>
+              <p class="artwork-detail-year">2025.07</p >
+              <p class="artwork-detail-technique">RAG、智能推荐系统</p >
+              <div class="artwork-detail-description">
+                <p>“吃定你了”是一个利用AI技术解决“吃什么”难题的餐厅推荐网站。它提供四大核心功能：用随机转盘终结选择困难；通过智能推荐标签筛选高分档口；查阅客观的排行榜；以及与星星助手对话，直接询问档口评分和美食推荐。我们通过前期收集的用户真实评价构建专属知识库，当用户提问或筛选时，系统会先从中精准检索相关信息，再由AI模型生成回答。确保所有推荐都基于真实用户反馈，提供了高度个性化和可信的决策参考。</p >
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">"Eatimate" is an AI-powered restaurant recommendation website designed to solve the dilemma of "where to eat." It offers four core features: a random wheel to end indecisiveness, smart recommendation tags for filtering highly-rated stalls, an objective ranking list, and a conversation with Star Assistant to directly inquire about stall ratings and food recommendations.By building a dedicated knowledge base from collected authentic user reviews, the system first retrieves relevant information accurately when users ask questions or apply filters. Then, the AI model generates responses based on this data, ensuring that all recommendations are grounded in real user feedback, providing highly personalized and trustworthy decision-making support.</p >
+              </div>
+            </div>
+            
+            <div class="artwork-image-panel">
+              <div class="artwork-video-container">
+                <video controls style="width: 100%; height: auto; display: block;">
+                  <source src="https://cloud.video.taobao.com/vod/cUEPK4pChi5x-dsnTzPjtPfRvNe9n7GIBzd50yqeTf8.mp4" type="video/mp4">
+                  您的浏览器不支持视频播放。
+                </video>
+              </div>
+              <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 0)">
+                <img src="https://img.alicdn.com/imgextra/i3/O1CN014ucSNo1zYZ1S1PUih_!!6000000006726-2-tps-2560-1477.png" alt="吃定你了 1" class="artwork-main-image" />
+              </div>
+              <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 1)">
+                <img src="https://img.alicdn.com/imgextra/i1/O1CN01Mutd4T1Ip1mS3qDPL_!!6000000000941-2-tps-2560-1278.png" alt="吃定你了 2" class="artwork-main-image" />
+              </div>
+              <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 2)">
+                <img src="https://img.alicdn.com/imgextra/i2/O1CN01oLgO4p1rGEF08GGY7_!!6000000005603-2-tps-1507-1355.png" alt="吃定你了 3" class="artwork-main-image" />
+              </div>
+              <div class="artwork-image-item" onclick="showEnlargedImage('chi-ding-ni', 3)">
+                <img src="https://img.alicdn.com/imgextra/i4/O1CN018mTJ0n1bpSrLWBuf8_!!6000000003514-2-tps-2144-1309.png" alt="吃定你了 4" class="artwork-main-image" />
+              </div>
+            </div>
           </div>
-          <div class="artwork-image-item" onclick="showEnlargedImage('smart-livestream', 0)">
-            <img src="https://img.alicdn.com/imgextra/i4/O1CN01jMsTgQ1xfm1gRNW2w_!!6000000006471-2-tps-2560-1278.png" alt="全链智播间 1" class="artwork-main-image" />
-          </div>
-          <div class="artwork-image-item" onclick="showEnlargedImage('smart-livestream', 1)">
-            <img src="https://img.alicdn.com/imgextra/i3/O1CN01yDsTsr1l6FvEJrVer_!!6000000004769-2-tps-2560-1278.png" alt="全链智播间 2" class="artwork-main-image" />
-          </div>
-          <div class="artwork-image-item" onclick="showEnlargedImage('smart-livestream', 2)">
-            <img src="https://img.alicdn.com/imgextra/i2/O1CN019bU0O91YC7zkD0DKG_!!6000000003022-2-tps-2560-1477.png" alt="全链智播间 3" class="artwork-main-image" />
+        </div>
+        
+        <!-- 全链智播间 Detail -->
+        <div id="smart-livestream-detail" class="artwork-detail">
+          <div class="artwork-detail-content">
+            <div class="artwork-info-panel">
+              <h2 class="artwork-detail-title">全链智播间</h2>
+              <p class="artwork-detail-year">2025.07</p >
+              <p class="artwork-detail-technique">MCP、图像生成、数字人直播技术</p >
+              <div class="artwork-detail-description">
+                <p>全链智播间项目深度融合多模态AI技术，打造一站式智能直播解决方案。平台依托AIGC能力，实现从全球热点选品、营销脚本生成到推广素材优化的全流程自动化，并借助多语言数字人主播，提供跨越时区、支持多语种的24小时无人直播服务。该方案有效解决了传统直播的成本高、效率低及跨国运营难题，助力品牌高效触达全球市场，推动电商直播向智能化、全球化演进。</p >
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">The All-Chain Smart Live Broadcast Project deeply integrates multimodal AI technologies to deliver an all-in-one intelligent livestreaming solution. Leveraging AIGC capabilities, the platform automates the entire process from global trend-based product selection and marketing script generation to promotional material optimization. With the support of multilingual digital human anchors, it provides 24/7 unmanned livestreaming services across time zones and in multiple languages. This solution effectively addresses the challenges of high costs, low efficiency, and cross-border operations in traditional livestreaming, helping brands efficiently reach the global market and driving the intelligent and global evolution of e-commerce livestreaming.</p >
+              </div>
+            </div>
+            
+            <div class="artwork-image-panel">
+              <div class="artwork-video-container">
+                <video controls style="width: 100%; height: auto; display: block;">
+                  <source src="https://cloud.video.taobao.com/vod/4Gc2pItKsT95AryNhBqMT-GcGcaWocwc9gxEbIn9D_M.mp4" type="video/mp4">
+                  您的浏览器不支持视频播放。
+                </video>
+              </div>
+              <div class="artwork-image-item" onclick="showEnlargedImage('smart-livestream', 0)">
+                <img src="https://img.alicdn.com/imgextra/i4/O1CN01jMsTgQ1xfm1gRNW2w_!!6000000006471-2-tps-2560-1278.png" alt="全链智播间 1" class="artwork-main-image" />
+              </div>
+              <div class="artwork-image-item" onclick="showEnlargedImage('smart-livestream', 1)">
+                <img src="https://img.alicdn.com/imgextra/i3/O1CN01yDsTsr1l6FvEJrVer_!!6000000004769-2-tps-2560-1278.png" alt="全链智播间 2" class="artwork-main-image" />
+              </div>
+              <div class="artwork-image-item" onclick="showEnlargedImage('smart-livestream', 2)">
+                <img src="https://img.alicdn.com/imgextra/i2/O1CN019bU0O91YC7zkD0DKG_!!6000000003022-2-tps-2560-1477.png" alt="全链智播间 3" class="artwork-main-image" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
   <!-- Me Page (Resume) -->
   <div id="me" class="page-container">
@@ -846,13 +836,12 @@
           <div class="profile-info">
             <h2 style="font-size: 2.5rem; font-weight: 400; margin-bottom: 0.5rem;">张雨露</h2>
             <p style="font-size: 1.2rem; color: #666; margin-bottom: 0.5rem;">建筑师 & AI产品经理</p >
-            <p style="font-size: 0.9rem; color: #888;">年龄：24岁 | 电话：18739421323 | 邮箱：1808826055@qq.com</p >
+            <p style="font-size: 0.9rem; color: #888;">年龄：24岁 | 电话：18739421323 | 微信：Zyla1323 | 邮箱：1808826055@qq.com</p >
           </div>
         </div>
       </div>
       
       <div class="resume-section">
-        <h3>教育背景</h3>
         <div class="resume-item">
           <div class="resume-item-header">
             <h4>同济大学 (985)</h4>
@@ -866,7 +855,7 @@
         
         <div class="resume-item">
           <div class="resume-item-header">
-            <h4>大连理工大学（985)</h4>
+            <h4>大连理工大学(985)</h4>
             <span class="resume-date">2018.09 - 2023.06</span>
           </div>
           <p>建筑学学士</p >
@@ -875,92 +864,17 @@
           <p>女生部部长、大创项目负责人、一等学习奖学金（4次）</p >
         </div>
       </div>
-      
-      <div class="resume-section">
-        <h3>工作经历</h3>
-        <div class="resume-item">
-          <div class="resume-item-header">
-            <h4>阿里国际 | 速卖通产品部</h4>
-            <span class="resume-date">2025.06 — 至今</span>
-          </div>
-          <p class="job-title">AI产品实习生</p >
-          <p class="job-description">工作概述：探索电商领域AI产品应用与落地，聚焦智能招商、虚拟试衣及数字人直播场景。主导核心功能从0到1建设，独立开发多模态AI应用原型并成功推动商业化立项，参与全链路AI产品设计与技术落地。</p >
-          <ul class="job-responsibilities">
-            <li>智能招商产品迭代：深度参与电商数字员工平台智能招商助手的功能迭代，从0到1设计并推动上线定制智能外呼与多渠道触达两大功能模块。基于NLP技术构建自定义智能外呼话术，支持业务端定制外呼，实现日均1w+商家的高效触达；通过多渠道触达平台整合招商场景钉钉/短信/外呼三端的触达情况，显著提升招商效率，缩短商家入驻周期。</li>
-            <li>独立开发全链路AI产品：独立设计并开发基于Claude模型的多模态数字人直播间原型，覆盖AI选品、个性口播生成、商品图创作到数字人视频直播的全链路流程，项目在部门AI创新大赛中荣获第3名（3/75）。并将大赛获奖项目持续迭代优化，升级为"AI试衣+数字人直播"融合方案，推动技术成果向商业化产品转化。</li>
-          </ul>
-        </div>
-        
-        <div class="resume-item">
-          <div class="resume-item-header">
-            <h4>小米 | 智能家居部</h4>
-            <span class="resume-date">2025.02 — 2025.05</span>
-          </div>
-          <p class="job-title">AI应用产品实习生</p >
-          <p class="job-description">工作概述：负责米家APP中AI功能"米家建议"的能力评测、优化迭代与用户反馈闭环，通过自主搭建周期性评测Agent、优化审核流程及深度分析用户反馈，显著提升功能的智能化水平、文案质量及用户体验。</p >
-          <ul class="job-responsibilities">
-            <li>搭建评测Agent：深度参与推送建议及总结习惯功能的多轮评测迭代。设计并确立时间、环境及历史行为合理性的评测维度，搭建评测工作流，独立封装Agent，实现评测流程自动化（自动读表、分析、生成报告），成功建立周期性评测机制。</li>
-            <li>文案生成流程设计：主导设计多设备组合文案智能生成流程，并搭建"AI初审-大模型修正-人工终审"三级审核工作流，将拒审原因自动传递至大模型进行针对性优化。输出标准化S0P规范，成功复用于100+智能场景文案生成体系。</li>
-            <li>用户反馈处理：每周处理100+条用户反馈，通过日志追踪与场景复现定位根因，协调技术团队及时修复异常问题。分析反馈提炼迭代需求，协助产品能力优化。</li>
-          </ul>
-        </div>
-        
-        <div class="resume-item">
-          <div class="resume-item-header">
-            <h4>上海可见爱学教育科技公司</h4>
-            <span class="resume-date">2024.09 — 2025.01</span>
-          </div>
-          <p class="job-title">AI产品实习生</p >
-          <p class="job-description">工作概述：负责火箭AI学习系统中AI错题解析和1V1知识点讲解产品的全流程设计与落地。独立主导两大核心AI功能模块从0到1的产品规划、需求分析、大模型选型评估及Prompt工程优化工作，显著提升系统智能化水平和用户体验。</p >
-          <ul class="job-responsibilities">
-            <li>产品规划设计：主导AI错题解析和1V1知识点讲解产品架构设计，通过调研精准把握学生个性化学习需求，融合大模型语义分析+知识点图谱+学习行为数据，实现智能解析、引导式解题，有效提升学生学习效率，用户满意度提升30%。</li>
-            <li>Prompt设计与测试：基于多学科场景需求，设计Prompt架构并制定工程化输入输出规范；从学科、年级、题型三个维度构建测试场景，依据评测结果持续优化Prompt；最终沉淀出覆盖不同产品线的20+Prompt模板，显著提升解析准确率。</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="resume-section">
-        <h3>项目经历</h3>
-        <div class="resume-item">
-          <div class="resume-item-header">
-            <h4>AIGC驱动的家具与空间装置设计及落地</h4>
-            <span class="resume-date">2024.03 — 2024.07</span>
-          </div>
-          <p>角色：项目负责人（AI产品设计→实体搭建全流程负责人）</p >
-          <ul class="project-details">
-            <li>Al设计：基于Stable Diffusion平台自主训练多种风格化LoRA模型，成功生成书法形椅子与中国结编织纹理的竹亭。</li>
-            <li>工程落地：主导5m×5m大型空间装置从AI设计到实体搭建，精准把控材料选型与施工节点，设计还原度达90%以上。</li>
-          </ul>
-        </div>
+    </div>
+  </div>
 
-        <div class="resume-item">
-          <div class="resume-item-header">
-            <h4>FuReb：传统民居立面图像智能改造系统</h4>
-            <span class="resume-date">2024.08 — 2024.12</span>
-          </div>
-          <p>角色：AI产品经理（数据集构建→模型训练→生成优化）</p >
-          <ul class="project-details">
-            <li>大模型微调：收集并清洗1000+传统民居案例数据，基于CLIP模型训练图像-文本对齐模型，生成多维度语义标签（风格/材质/结构），基于数据集微调Stable Diffusion模型，适配传统民居风格化生成需求。</li>
-            <li>工作流设计与图像生成：使用ComfyUI搭建可视化工作流，设计模块化节点系统，支持灵活调整生成参数。</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="resume-section">
-        <h3>技能优势</h3>
-        <p class="skills-overview">优势：深入理解AI技术原理，熟练运用主流AIGC工具与大模型，具备智能体开发与落地的全流程实践经验。</p >
-        <div class="skills-container">
-          <div class="skill-category">
-            <h4>技术工具</h4>
-            <p>Prompt Engineering、Midjourney、ComfyUI | Python、SQL | Figma、X-mind、Office系列 | PS、AI、ID</p >
-          </div>
-          
-          <div class="skill-category">
-            <h4>语言能力</h4>
-            <p>CET-6（英语可作为工作语言）</p >
-          </div>
-        </div>
-      </div>
+  <!-- Global Image Modal -->
+  <div id="image-modal" class="image-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="hideEnlargedImage()">&times;</span>
+      <img id="enlarged-image" src="" alt="Enlarged artwork" class="enlarged-image" />
+      <button id="prev-image" class="image-nav-modal prev" onclick="navigateImage(-1)">&lt;</button>
+      <button id="next-image" class="image-nav-modal next" onclick="navigateImage(1)">&gt;</button>
+      <div id="image-counter-modal" class="image-counter-modal">1 / 10</div>
     </div>
   </div>
 
@@ -1176,4 +1090,3 @@
   </script>
 </body>
 </html>
-
